@@ -6,7 +6,7 @@ export default function User(props) {
   return (
     <div className="center">
       <div>
-        <img src={props.image} alt="User" />
+        <img src={props.image} alt="User" width="10%" />
       </div>
       <div>
         <h2>Name: {props.name}</h2>
