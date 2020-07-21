@@ -7,32 +7,31 @@ import {
 } from "react-router-dom";
 
 import Users from "./pages/Users";
-import UserBlogs from "./pages/UserBlogs";
-import UpdateBlog from "./pages/UpdateBlog";
-import NewBlog from "./pages/NewBlog";
+import UserArticles from "./pages/UserArticles";
+import UpdateArticle from "./pages/UpdateArticle";
+import NewArticle from "./pages/NewArticle";
 import Auth from "./pages/Auth";
-import "./App.css";
 
 function App() {
   //  / =>               List of users                     => Always reachable
-  //  /:userId/blogs  => List of blogs for selected user   => Always reachable
+  //  /:userId/articles  => List of articles for selected user   => Always reachable
   //  /auth           => Signup / Login Forms              => Only un-authenticated
-  //  /blogs/new      => Adding new blog form              => Only authenticated
-  //  /blogs/:blogId  => Update selected blog form         => Only authenticated
+  //  /articles/new      => Adding new article form              => Only authenticated
+  //  /articles/:articleId  => Update selected article form         => Only authenticated
 
   let routes = (
     <Switch>
       <Route path="/" exact>
         <Users />
       </Route>
-      <Route path="/:userId/blogs" exact>
-        <UserBlogs />
+      <Route path="/:userId/articles" exact>
+        <UserArticles />
       </Route>
-      <Route path="/blogs/new" exact>
-        <NewBlog />
+      <Route path="/articles/new" exact>
+        <NewArticle />
       </Route>
-      <Route path="/blogs/:blogId" exact>
-        <UpdateBlog />
+      <Route path="/articles/:articleId" exact>
+        <UpdateArticle />
       </Route>
       <Route path="/auth">
         <Auth />
