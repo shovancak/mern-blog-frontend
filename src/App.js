@@ -11,6 +11,7 @@ import UserArticles from "./pages/UserArticles";
 import UpdateArticle from "./pages/UpdateArticle";
 import NewArticle from "./pages/NewArticle";
 import Auth from "./pages/Auth";
+import NavHeader from "./components/NavHeader";
 
 function App() {
   //  / =>               List of users                     => Always reachable
@@ -20,24 +21,27 @@ function App() {
   //  /articles/:articleId  => Update selected article form         => Only authenticated
 
   let routes = (
-    <Switch>
-      <Route path="/" exact>
-        <Users />
-      </Route>
-      <Route path="/:userId/articles" exact>
-        <UserArticles />
-      </Route>
-      <Route path="/articles/new" exact>
-        <NewArticle />
-      </Route>
-      <Route path="/articles/:articleId" exact>
-        <UpdateArticle />
-      </Route>
-      <Route path="/auth">
-        <Auth />
-      </Route>
-      <Redirect to="/" />
-    </Switch>
+    <React.Fragment>
+      <NavHeader />
+      <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/:userId/articles" exact>
+          <UserArticles />
+        </Route>
+        <Route path="/articles/new" exact>
+          <NewArticle />
+        </Route>
+        <Route path="/articles/:articleId" exact>
+          <UpdateArticle />
+        </Route>
+        <Route path="/auth">
+          <Auth />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </React.Fragment>
   );
 
   return <Router>{routes}</Router>;
