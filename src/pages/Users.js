@@ -9,6 +9,18 @@ export default function Users() {
       name: "Samuel",
       articles: 3,
     },
+    {
+      id: "u2",
+      image: "https://i.imgur.com/DcylgJM.jpg",
+      name: "Max",
+      articles: 1,
+    },
+    {
+      id: "u3",
+      image: "https://i.imgur.com/DcylgJM.jpg",
+      name: "Andrei",
+      articles: 2,
+    },
   ];
 
   return (

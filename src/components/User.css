@@ -1,0 +1,30 @@
+.user-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-size {
+  margin: 10px;
+  width: 280px;
+  height: 180px;
+}
+
+.user-info {
+  padding: 2px 50px;
+}
+
+#userCard {
+  background-color: rgb(0, 204, 153);
+  color: black;
+  transition: 0.3s;
+}
+
+#userCard:hover {
+  background-color: rgb(110, 202, 179);
+  width: 320px;
+  height: 190px;
+  color: black;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.267);
+}
