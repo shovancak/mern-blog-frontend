@@ -22,14 +22,29 @@ export default function NavHeader() {
           </div>
           <div>
             <Button>
-              <Link to="/" style={{ color: "black", textDecoration: "none" }}>
+              <Link
+                to="/"
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  padding: "8px",
+                }}
+              >
                 ALL USERS
               </Link>
             </Button>
             <Button>
               <Link
                 to="/:userId/articles"
-                style={{ color: "black", textDecoration: "none" }}
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  padding: "8px",
+                }}
               >
                 MY ARTICLES
               </Link>
@@ -37,7 +52,13 @@ export default function NavHeader() {
             <Button>
               <Link
                 to="/articles/new"
-                style={{ color: "black", textDecoration: "none" }}
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  padding: "8px",
+                }}
               >
                 NEW ARTICLE
               </Link>
@@ -45,7 +66,13 @@ export default function NavHeader() {
             <Button>
               <Link
                 to="/auth"
-                style={{ color: "black", textDecoration: "none" }}
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  borderStyle: "solid",
+                  borderWidth: "1px",
+                  padding: "8px",
+                }}
               >
                 AUTH
               </Link>
