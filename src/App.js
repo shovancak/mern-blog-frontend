@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 
 import Header from "./Header/Header";
-import Articles from "./Articles/Articles";
 import NewArticle from "./Articles/NewArticle";
 import Users from "./Users/Users";
 
@@ -24,11 +23,10 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <h1>APP WORKING</h1>
       <Router>
         <Switch>
           <Route path="/" exact>
-            <Articles />
+            <Users />
           </Route>
           <Route path="/users" exact>
             <Users />
