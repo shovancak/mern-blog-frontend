@@ -7,14 +7,14 @@
   border-radius: 10px;
   margin: 12px;
   padding: 20px;
-  background-color: #167a8b;
-  color: white;
+  background-color: #2dea8f;
+  color: black;
+  text-shadow: 2px 1px white;
   transition: 0.3s;
 }
 
 .userItem-card:hover {
   background-color: white;
-  color: black;
   width: 320px;
   height: 240px;
   box-shadow: 10px 10px #24b273;
