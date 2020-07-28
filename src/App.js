@@ -6,12 +6,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Users from "./pages/Users";
-import UserArticles from "./pages/UserArticles";
-import UpdateArticle from "./pages/UpdateArticle";
-import NewArticle from "./pages/NewArticle";
-import Auth from "./pages/Auth";
-import NavHeader from "./components/NavHeader";
+import "./App.css";
 
 function App() {
   //  / =>               List of users                     => Always reachable
@@ -20,31 +15,11 @@ function App() {
   //  /articles/new      => Adding new article form              => Only authenticated
   //  /articles/:articleId  => Update selected article form         => Only authenticated
 
-  let routes = (
-    <React.Fragment>
-      <NavHeader />
-      <Switch>
-        <Route path="/" exact>
-          <Users />
-        </Route>
-        <Route path="/:userId/articles" exact>
-          <UserArticles />
-        </Route>
-        <Route path="/articles/new" exact>
-          <NewArticle />
-        </Route>
-        <Route path="/articles/:articleId" exact>
-          <UpdateArticle />
-        </Route>
-        <Route path="/auth">
-          <Auth />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    </React.Fragment>
+  return (
+    <div className="app">
+      <h1>APP WORKING</h1>
+    </div>
   );
-
-  return <Router>{routes}</Router>;
 }
 
 export default App;
