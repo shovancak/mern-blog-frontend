@@ -9,14 +9,23 @@
 .nav-links li {
   border-style: solid;
   border-width: 1px;
-  border-color: white;
+  border-radius: 5px;
+  border-color: black;
+  padding: 10px 10px;
   text-decoration: none;
+  text-shadow: 2px 1px white;
+  font-size: 110%;
   margin: 10px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: white;
+  color: black;
+}
+
+.nav-links li:hover {
+  background-color: white;
+  text-shadow: 2px 1px #24b273;
 }
 
 nav {

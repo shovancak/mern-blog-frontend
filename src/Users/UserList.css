@@ -4,6 +4,14 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-top: white;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  background-color: #eeeeee;
+  border-radius: 5px;
 }
 
 .no-users {
