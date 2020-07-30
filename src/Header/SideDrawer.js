@@ -1,7 +1,13 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 const SideDrawer = (props) => {
-  return <aside>{props.children}</aside>;
+  const drawerContent = <aside>{props.children}</aside>;
+
+  return ReactDOM.createPortal(
+    drawerContent,
+    document.getElementById("drawer")
+  );
 };
 
 export default SideDrawer;
