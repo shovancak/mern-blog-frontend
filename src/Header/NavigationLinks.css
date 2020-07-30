@@ -1,0 +1,26 @@
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-links li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

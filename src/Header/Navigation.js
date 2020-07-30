@@ -1,8 +1,9 @@
 import React from "react";
+
 import Header from "./Header";
 import Title from "./Title";
 import { Link } from "react-router-dom";
-
+import NavigationLinks from "./NavigationLinks";
 import "./Navigation.css";
 
 const Navigation = (props) => {
@@ -16,7 +17,9 @@ const Navigation = (props) => {
       <Link to="/">
         <Title />
       </Link>
-      <nav>...</nav>
+      <nav>
+        <NavigationLinks />
+      </nav>
     </Header>
   );
 };
