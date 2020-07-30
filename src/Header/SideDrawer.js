@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const SideDrawer = (props) => {
-  const drawerContent = <aside>{props.children}</aside>;
+  const drawerContetnt = (
+    <aside className="side-drawer">{props.children}</aside>
+  );
 
   return ReactDOM.createPortal(
-    drawerContent,
+    drawerContetnt,
     document.getElementById("drawer")
   );
 };
