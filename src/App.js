@@ -6,9 +6,9 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Header from "./Navigaton/Header";
 import NewArticle from "./Articles/NewArticle";
 import Users from "./Users/Users";
+import Navigation from "./Header/Navigation";
 
 import "./App.css";
 
@@ -22,8 +22,8 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
       <Router>
+        <Navigation />
         <Switch>
           <Route path="/" exact>
             <Users />
