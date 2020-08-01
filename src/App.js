@@ -12,12 +12,13 @@ import UserArticles from "./articles/pages/UserArticles";
 import NewArticle from "./articles/pages/NewArticle";
 import UpdateArticle from "./articles/pages/UpdateArticle";
 import Auth from "./auth/pages/Auth";
+import Header from "./shared/components/header/Header";
 
 import "./App.css";
-
 function App() {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Users />
