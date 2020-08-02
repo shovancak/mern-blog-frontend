@@ -12,6 +12,11 @@
   width: 35%;
 }
 
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
 @media (max-width: 768px) {
   .title {
     width: 75%;
