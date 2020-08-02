@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 import {
   BrowserRouter as Router,
@@ -6,7 +7,6 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-
 import Users from "./users/pages/Users";
 import UserArticles from "./articles/pages/UserArticles";
 import NewArticle from "./articles/pages/NewArticle";
@@ -14,8 +14,7 @@ import UpdateArticle from "./articles/pages/UpdateArticle";
 import Auth from "./auth/pages/Auth";
 import Header from "./shared/components/header/Header";
 
-import "./App.css";
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />
@@ -42,6 +41,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
