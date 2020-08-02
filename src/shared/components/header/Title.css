@@ -1,10 +1,7 @@
 .title {
   display: flex;
   flex-direction: row;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  margin: 0.5rem 0rem;
+  margin: 0.5rem;
   height: 4rem;
   justify-content: center;
   align-items: center;

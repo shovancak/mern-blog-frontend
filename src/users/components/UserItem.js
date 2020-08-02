@@ -1,27 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./UserItem.css";
 
 const UserItem = (props) => {
   return (
-    <div className="card">
-      CARD
+    <li className="card">
       <div className="info-user">
-        INFO
-        <div>AVATAR</div>
-        <div>
-          <div>Name: {props.name}</div>
-          <div>{`${props.amount} ${
-            props.amount === 1 ? "Article" : "Articles"
-          }`}</div>
-        </div>
+        <Link to={`${props.id}/articles`}>
+          <div>AVATAR</div>
+          <div>
+            <div>Name: {props.name}</div>
+            <div>{`${props.amount} ${
+              props.amount === 1 ? "Article" : "Articles"
+            }`}</div>
+          </div>
+        </Link>
       </div>
       <div className="info-article">
-        LAST ARTICLE
-        <div>TITLE</div>
-        <div>DESCRIPTION</div>
+        <Link to={`/${props.id}/${props.articleId}`}>
+          <div>TITLE</div>
+          <div>DESCRIPTION</div>
+        </Link>
       </div>
-    </div>
+    </li>
   );
 };
 

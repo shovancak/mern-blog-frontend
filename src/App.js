@@ -35,6 +35,9 @@ function App() {
         <Route path="/auth">
           <Auth />
         </Route>
+        <Route path="/:userId/:articleId" exact>
+          <div>ARTICLE by ID</div>
+        </Route>
         <Redirect to="/" />
       </Switch>
     </Router>

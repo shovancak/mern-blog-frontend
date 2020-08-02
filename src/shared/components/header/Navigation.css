@@ -1,9 +1,6 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
   width: 70%;
   margin: 10px 10px 10px 5px;
   height: 60px;

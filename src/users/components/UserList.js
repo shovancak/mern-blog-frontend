@@ -14,6 +14,7 @@ const UserList = (props) => {
             id={user.id}
             name={user.name}
             image={user.image}
+            articleId={user.articleId}
             amount={user.amount}
           />
         ))}
