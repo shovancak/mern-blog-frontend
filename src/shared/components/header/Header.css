@@ -4,7 +4,7 @@
   border-width: 1px;
   border-color: black;
   border-radius: 10px;
-  height: 80px;
+  height: 5rem;
   width: auto;
   display: flex;
   flex-direction: row;
@@ -15,6 +15,6 @@
   .header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: start;
   }
 }
