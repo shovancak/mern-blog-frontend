@@ -1,0 +1,19 @@
+.title {
+  display: flex;
+  flex-direction: row;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  margin: 0.5rem 0rem;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.7rem;
+  width: 35%;
+}
+
+@media (max-width: 768px) {
+  .title {
+    width: 75%;
+  }
+}

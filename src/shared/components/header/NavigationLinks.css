@@ -1,0 +1,40 @@
+.links-buttons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.links-buttons a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  width: auto;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.links-buttons li {
+  border-radius: 5px;
+  height: auto;
+  margin: 0.5rem;
+}
+
+.links-buttons a:hover,
+.links-buttons a:active,
+.links-buttons a.active {
+  color: white;
+  background-color: #a5a5a5;
+  text-shadow: 2px 2px black;
+}

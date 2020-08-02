@@ -1,0 +1,18 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  width: 70%;
+  margin: 10px 10px 10px 0px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+}
