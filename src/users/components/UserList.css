@@ -1,3 +1,7 @@
 ul {
   padding-inline-start: 0;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
 }

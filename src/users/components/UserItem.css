@@ -1,3 +1,31 @@
 .card {
   border: 1px solid black;
+  width: 40rem;
+  height: 10rem;
+  display: flex;
+  flex-direction: row;
+  margin: 0.3rem;
+}
+
+.info-user {
+  border: 1px solid black;
+  width: 40%;
+  margin: 1%;
+}
+
+.info-article {
+  border: 1px solid black;
+  width: 60%;
+  margin: 1%;
+}
+
+@media (max-width: 768px) {
+  .info-article {
+    display: none;
+    width: 0;
+    margin: 0;
+  }
+  .info-user {
+    width: 100%;
+  }
 }
