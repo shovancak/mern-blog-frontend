@@ -8,10 +8,17 @@ const UserItem = (props) => {
     <li className="card">
       <div className="info-user">
         <Link to={`${props.id}/articles`}>
-          <div>AVATAR</div>
-          <div>
-            <div>Name: {props.name}</div>
-            <div>{`${props.amount} ${
+          <div className="avatar">
+            <img
+              className="image"
+              src={props.image}
+              width={100}
+              alt="User avatar"
+            />
+          </div>
+          <div className="info">
+            <div className="name">Name: {props.name}</div>
+            <div className="amount">{`${props.amount} ${
               props.amount === 1 ? "Article" : "Articles"
             }`}</div>
           </div>
