@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   font-size: 2.7rem;
-  width: 35%;
+  width: 11.5rem;
 }
 
 .title a {
@@ -14,8 +14,13 @@
   color: black;
 }
 
+.title a:hover {
+  background: inherit;
+  text-shadow: none;
+}
+
 @media (max-width: 768px) {
   .title {
-    width: 75%;
+    width: 11.5rem;
   }
 }
