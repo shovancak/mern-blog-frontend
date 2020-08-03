@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import Backdrop from "./Backdrop";
+import TopDrawer from "./TopDrawer";
+import NavigationLinksDrawer from "./NavigationLinksDrawer";
 
 import "./NavigationMenuButton.css";
 
 const NavigationMenuButton = () => {
-  const clickHandler = (e) => {
-    e.preventDefault();
-    console.log("CLICK");
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const openDrawerHandler = () => {
+    setOpenDrawer(true);
+  };
+
+  const closeDrawerHandler = () => {
+    setOpenDrawer(false);
   };
 
   return (
-    <div className="nav-menu-icon" onClick={clickHandler}>
-      <span className="nav-menu-btn"></span>
-      <span className="nav-menu-btn"></span>
-      <span className="nav-menu-btn"></span>
-      <span className="nav-menu-btn"></span>
-    </div>
+    <React.Fragment>
+      {openDrawer && <Backdrop onClick={closeDrawerHandler} />}
+      <TopDrawer show={openDrawer} onClick={closeDrawerHandler}>
+        <NavigationLinksDrawer />
+      </TopDrawer>
+      <div className="nav-menu-icon" onClick={openDrawerHandler}>
+        <span className="nav-menu-btn"></span>
+        <span className="nav-menu-btn"></span>
+        <span className="nav-menu-btn"></span>
+        <span className="nav-menu-btn"></span>
+      </div>
+    </React.Fragment>
   );
 };
 
