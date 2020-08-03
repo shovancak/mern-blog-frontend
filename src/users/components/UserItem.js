@@ -26,8 +26,11 @@ const UserItem = (props) => {
       </div>
       <div className="info-article">
         <Link to={`/${props.id}/${props.articleId}`}>
-          <div>TITLE</div>
-          <div>DESCRIPTION</div>
+          <div className="info-last-art">
+            <div className="last-art">Last article</div>
+            <div className="last-art-title">Title:</div>
+            <div className="last-art-desc">Description:</div>
+          </div>
         </Link>
       </div>
     </li>
