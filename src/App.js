@@ -13,6 +13,7 @@ import NewArticle from "./articles/pages/NewArticle";
 import UpdateArticle from "./articles/pages/UpdateArticle";
 import Auth from "./auth/pages/Auth";
 import Header from "./shared/components/header/Header";
+import SingleArtilce from "./articles/pages/SingleArticle";
 
 const App = () => {
   return (
@@ -28,14 +29,14 @@ const App = () => {
         <Route path="/articles/new" exact>
           <NewArticle />
         </Route>
-        <Route path="/articles/:articleId">
+        <Route path="/articles/update/:articleId">
           <UpdateArticle />
         </Route>
         <Route path="/auth">
           <Auth />
         </Route>
-        <Route path="/:userId/:articleId" exact>
-          <div>ARTICLE by ID</div>
+        <Route path="/articles/:articleId" exact>
+          <SingleArtilce />
         </Route>
         <Redirect to="/" />
       </Switch>
