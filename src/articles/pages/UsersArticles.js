@@ -8,8 +8,7 @@ const DUMMY_ARTICLES = [
     id: "a1",
     creator: "u1",
     title: "MERN Stack",
-    imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRHaXnpq17S4ClpSWeZwg8VT4U6tBnJuccZaA&usqp=CAU",
+    imageUrl: "https://i.morioh.com/67feeaf72f.png",
     description:
       "One of the most popular technology stacks in web development.",
     text:
