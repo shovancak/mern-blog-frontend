@@ -11,7 +11,7 @@ const ArticleItem = (props) => {
         </div>
         <div className="article-item-info-td">
           <div className="article-item-info-title">{props.title}</div>
-          <div className="article-item-info-desc">DESCRIPTION</div>
+          <div className="article-item-info-desc">{props.description}</div>
         </div>
       </div>
     </div>
