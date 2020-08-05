@@ -1,0 +1,43 @@
+.article-list {
+  border: 1px solid black;
+  width: 95%;
+  margin-block-start: 0.3rem;
+  margin-block-end: 0.3rem;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1%;
+}
+
+@media (min-width: 768px) {
+  .article-list {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .article-list {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .article-list {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .article-list {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .article-list {
+    width: 60%;
+  }
+}

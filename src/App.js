@@ -8,7 +8,7 @@ import {
   Switch,
 } from "react-router-dom";
 import Users from "./users/pages/Users";
-import UserArticles from "./articles/pages/UserArticles";
+import UsersArticles from "./articles/pages/UsersArticles";
 import NewArticle from "./articles/pages/NewArticle";
 import UpdateArticle from "./articles/pages/UpdateArticle";
 import Auth from "./auth/pages/Auth";
@@ -23,7 +23,7 @@ const App = () => {
           <Users />
         </Route>
         <Route path="/:userId/articles" exact>
-          <UserArticles />
+          <UsersArticles />
         </Route>
         <Route path="/articles/new" exact>
           <NewArticle />

@@ -1,0 +1,7 @@
+.articles {
+  border: 1px solid crimson;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
