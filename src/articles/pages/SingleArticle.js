@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+import Button from "../../shared/components/Button";
+
 import "./SingleArticle.css";
 
 const DUMMY_ARTICLES = [
@@ -52,6 +54,15 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
         {singleArticle.description}
       </div>
       <div className="single-article-text">{singleArticle.text}</div>
+      <div className="single-article-buttons">
+        <Button
+          to={`/articles/update/${singleArticle.articleId}`}
+          className="single-article-button"
+        >
+          EDIT
+        </Button>
+        <Button className="single-article-button">DELETE</Button>
+      </div>
     </div>
   );
 };
