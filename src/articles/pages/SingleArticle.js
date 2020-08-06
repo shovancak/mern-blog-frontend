@@ -40,10 +40,15 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
   console.log(singleArticle);
 
   return (
-    <div>
-      <div>{singleArticle.title}</div>
-      <div>{singleArticle.description}</div>
-      <div>{singleArticle.text}</div>
+    <div className="single-article-card">
+      <div className="single-article-image">
+        <img src={singleArticle.imageUrl} alt="Article" />
+      </div>
+      <div className="single-article-title">{singleArticle.title}</div>
+      <div className="single-article-description">
+        {singleArticle.description}
+      </div>
+      <div className="single-article-text">{singleArticle.text}</div>
     </div>
   );
 };
