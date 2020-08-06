@@ -12,7 +12,7 @@ import UsersArticles from "./articles/pages/UsersArticles";
 import NewArticle from "./articles/pages/NewArticle";
 import UpdateArticle from "./articles/pages/UpdateArticle";
 import Auth from "./auth/pages/Auth";
-import Header from "./shared/components/header/Header";
+import Header from "./header/Header";
 import SingleArtilce from "./articles/pages/SingleArticle";
 
 const App = () => {
