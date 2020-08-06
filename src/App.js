@@ -29,10 +29,10 @@ const App = () => {
         <Route path="/articles/new" exact>
           <NewArticle />
         </Route>
-        <Route path="/articles/update/:articleId">
+        <Route path="/articles/update/:articleId" exact>
           <UpdateArticle />
         </Route>
-        <Route path="/auth">
+        <Route path="/auth" exact>
           <Auth />
         </Route>
         <Route path="/articles/:articleId" exact>
