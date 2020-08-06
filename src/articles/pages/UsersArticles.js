@@ -1,4 +1,6 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+
 import ArticleList from "./components/ArticleList";
 
 import "./UsersArticles.css";
@@ -16,7 +18,7 @@ const DUMMY_ARTICLES = [
   },
   {
     id: "a2",
-    creator: "u1",
+    creator: "u2",
     title: "React",
     imageUrl: "https://probella.com/wp-content/uploads/2018/03/React-JS.png",
     description:
@@ -26,7 +28,7 @@ const DUMMY_ARTICLES = [
   },
   {
     id: "a3",
-    creator: "u2",
+    creator: "u1",
     title: "NodeJs",
     imageUrl: "https://miro.medium.com/proxy/1*q9ww_u32hhpMaA-Q_s1ujw.png",
     description:
@@ -37,9 +39,17 @@ const DUMMY_ARTICLES = [
 ];
 
 const UsersArticles = () => {
+  const userId = useParams().userId;
+  let usersPlaces = [];
+  DUMMY_ARTICLES.map((article) => {
+    if (article.creator === userId) {
+      usersPlaces.push(article);
+    }
+  });
+  console.log(usersPlaces);
   return (
     <div className="articles">
-      <ArticleList items={DUMMY_ARTICLES} />
+      <ArticleList items={usersPlaces} />
     </div>
   );
 };

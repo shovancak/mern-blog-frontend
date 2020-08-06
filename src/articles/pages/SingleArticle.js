@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 import "./SingleArticle.css";
 
@@ -15,7 +16,7 @@ const DUMMY_ARTICLES = [
   },
   {
     id: "a2",
-    creator: "u1",
+    creator: "u2",
     title: "React",
     imageUrl: "https://probella.com/wp-content/uploads/2018/03/React-JS.png",
     description:
@@ -25,7 +26,7 @@ const DUMMY_ARTICLES = [
   },
   {
     id: "a3",
-    creator: "u2",
+    creator: "u1",
     title: "NodeJs",
     imageUrl: "https://miro.medium.com/proxy/1*q9ww_u32hhpMaA-Q_s1ujw.png",
     description:
@@ -36,8 +37,10 @@ const DUMMY_ARTICLES = [
 ];
 
 const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
-  const singleArticle = DUMMY_ARTICLES.find((article) => article.id === "a1");
-  console.log(singleArticle);
+  const articleId = useParams().articleId;
+  const singleArticle = DUMMY_ARTICLES.find(
+    (article) => article.id === articleId
+  );
 
   return (
     <div className="single-article-card">
