@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Button from "../../shared/components/Button";
+import Modal from "../../shared/components/Modal";
 
 import "./SingleArticle.css";
 
@@ -44,26 +45,74 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
     (article) => article.id === articleId
   );
 
+  const [showModal, setShowModal] = useState(false);
+
+  const showDeleteWarningHandler = () => {
+    setShowModal(true);
+  };
+
+  const closeDeleteWarnigHandler = () => {
+    setShowModal(false);
+  };
+
+  const deleteArticleHandler = () => {
+    console.log("ARTICLE HAS BEEN DELETED");
+  };
+
   return (
-    <div className="single-article-card">
-      <div className="single-article-image">
-        <img src={singleArticle.imageUrl} alt="Article" />
-      </div>
-      <div className="single-article-title">{singleArticle.title}</div>
-      <div className="single-article-description">
-        {singleArticle.description}
-      </div>
-      <div className="single-article-text">{singleArticle.text}</div>
-      <div className="single-article-buttons">
-        <Button
-          to={`/articles/update/${singleArticle.articleId}`}
-          className="single-article-button"
+    <React.Fragment>
+      {showModal && (
+        <Modal
+          className="modal-warning"
+          show={showModal}
+          onCancel={closeDeleteWarnigHandler}
         >
-          EDIT
-        </Button>
-        <Button className="single-article-button">DELETE</Button>
+          <div className="delete-article-modal">
+            <div className="delete-article-modal-question">
+              Do you really want to delete this article?
+            </div>
+            <div className="delete-article-modal-buttons">
+              <Button
+                className="single-article-button"
+                onClick={deleteArticleHandler}
+              >
+                YES
+              </Button>
+              <Button
+                className="single-article-button"
+                onClick={closeDeleteWarnigHandler}
+              >
+                NO
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
+      <div className="single-article-card">
+        <div className="single-article-image">
+          <img src={singleArticle.imageUrl} alt="Article" />
+        </div>
+        <div className="single-article-title">{singleArticle.title}</div>
+        <div className="single-article-description">
+          {singleArticle.description}
+        </div>
+        <div className="single-article-text">{singleArticle.text}</div>
+        <div className="single-article-buttons">
+          <Button
+            to={`/articles/update/${singleArticle.articleId}`}
+            className="single-article-button"
+          >
+            EDIT
+          </Button>
+          <Button
+            className="single-article-button"
+            onClick={showDeleteWarningHandler}
+          >
+            DELETE
+          </Button>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
