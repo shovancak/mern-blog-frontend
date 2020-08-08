@@ -1,12 +1,17 @@
 import React from "react";
 
 import ArticleItem from "./ArticleItem";
+import Card from "../../../shared/components/Card";
 
 import "./ArticleList.css";
 
 const ArticleList = (props) => {
   if (props.items.length === 0) {
-    return <div>No articles yet.</div>;
+    return (
+      <Card>
+        <h2>You have no articles created.</h2>
+      </Card>
+    );
   }
   return (
     <ul className="article-list">
