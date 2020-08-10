@@ -46,7 +46,6 @@ const UsersArticles = () => {
       usersPlaces.push(article);
     }
   });
-  console.log(usersPlaces);
   return (
     <div className="articles">
       <ArticleList items={usersPlaces} />
