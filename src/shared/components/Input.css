@@ -18,3 +18,13 @@
 .form-control textarea {
   width: 100%;
 }
+
+.form-control-invalid label,
+.form-control-invalid p {
+  color: #ff2233;
+}
+
+.form-control-invalid input,
+.form-control-invalid textarea {
+  border-color: #ff2233;
+}
