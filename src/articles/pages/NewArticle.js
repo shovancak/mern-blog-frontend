@@ -1,6 +1,7 @@
 import React from "react";
 
 import Input from "../../shared/components/Input";
+import { VALIDATOR_REQUIRE } from "../../shared/utilities/validators";
 
 import "./NewArticle.css";
 
@@ -12,7 +13,7 @@ const NewArticle = () => {
         element="input"
         type="text"
         label="Title"
-        validators={[]}
+        validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a title."
       />
     </form>
