@@ -1,0 +1,20 @@
+.form-control {
+  background-color: #0b8457;
+  text-align: start;
+  width: 100%;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+}
+
+.form-control label {
+  margin-bottom: 0.5rem;
+}
+
+.form-control input,
+.form-control textarea {
+  width: 100%;
+}
