@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import { VALIDATOR_REQUIRE } from "../../shared/utilities/validators";
+import { useForm } from "../../shared/utilities/form-validation-hook";
 
 import Card from "../../shared/components/Card";
 import Input from "../../shared/components/Input";
@@ -49,6 +50,29 @@ const UpdateArticle = () => {
     (article) => article.id === articleId
   );
 
+  const [formState, inputHandler] = useForm(
+    {
+      title: {
+        value: articleToUpdate.title,
+        isValid: true,
+      },
+      description: {
+        value: articleToUpdate.description,
+        isValid: true,
+      },
+      text: {
+        value: articleToUpdate.text,
+        isValid: true,
+      },
+    },
+    true
+  );
+
+  const articleUpdateSubmithandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
+
   if (!articleToUpdate) {
     return (
       <Card>
@@ -58,7 +82,7 @@ const UpdateArticle = () => {
   }
 
   return (
-    <form className="article-form center">
+    <form className="article-form center" onSubmit={articleUpdateSubmithandler}>
       <div className="article-form-header">UPDATE ARTILCE</div>
       <Input
         id="title"
@@ -67,9 +91,9 @@ const UpdateArticle = () => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a title for article"
-        onInput={() => {}}
-        value={articleToUpdate.title}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.title.value}
+        initialValid={formState.inputs.title.isValid}
       />
       <Input
         id="description"
@@ -77,9 +101,9 @@ const UpdateArticle = () => {
         rows="3"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a description for article"
-        onInput={() => {}}
-        value={articleToUpdate.description}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.description.value}
+        initialValid={formState.inputs.description.isValid}
       />
       <Input
         id="text"
@@ -87,18 +111,18 @@ const UpdateArticle = () => {
         rows="25"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a text for article"
-        onInput={() => {}}
-        value={articleToUpdate.text}
-        valid={true}
+        onInput={inputHandler}
+        initialValue={formState.inputs.text.value}
+        initialValid={formState.inputs.text.isValid}
       />
       <Button
         type="submit"
-        // disabled={!formState.isValid}
-        // className={`${
-        //   formState.isValid
-        //     ? `form-submit-button-valid`
-        //     : `form-submit-button-invalid`
-        // }`}
+        disabled={!formState.isValid}
+        className={`${
+          formState.isValid
+            ? `form-submit-button-valid`
+            : `form-submit-button-invalid`
+        }`}
       >
         UPDATE
       </Button>
