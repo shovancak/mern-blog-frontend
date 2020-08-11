@@ -74,7 +74,15 @@ const NewArticle = () => {
         errorText="Please enter a description."
         onInput={inputHandler}
       />
-      <Button type="submit" disabled={!formState.isValid}>
+      <Button
+        disabled={!formState.isValid}
+        type="submit"
+        className={`${
+          formState.isValid
+            ? `form-submit-button-valid`
+            : `form-submit-button-invalid`
+        }`}
+      >
         CREATE ARTICLE
       </Button>
     </form>
