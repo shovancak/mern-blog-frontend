@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { VALIDATOR_REQUIRE } from "../../shared/utilities/validators";
@@ -45,28 +45,50 @@ const DUMMY_ARTICLES = [
 
 const UpdateArticle = () => {
   const articleId = useParams().articleId;
+  const [loading, setLoading] = useState(true);
+
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: "",
+        isValid: false,
+      },
+      description: {
+        value: "",
+        isValid: false,
+      },
+      text: {
+        value: "",
+        isValid: false,
+      },
+    },
+    true
+  );
 
   const articleToUpdate = DUMMY_ARTICLES.find(
     (article) => article.id === articleId
   );
 
-  const [formState, inputHandler] = useForm(
-    {
-      title: {
-        value: articleToUpdate.title,
-        isValid: true,
+  useEffect(() => {
+    setFormData(
+      {
+        title: {
+          value: articleToUpdate.title,
+          isValid: true,
+        },
+        description: {
+          value: articleToUpdate.description,
+          isValid: true,
+        },
+        text: {
+          value: articleToUpdate.text,
+          isValid: true,
+        },
       },
-      description: {
-        value: articleToUpdate.description,
-        isValid: true,
-      },
-      text: {
-        value: articleToUpdate.text,
-        isValid: true,
-      },
-    },
-    true
-  );
+      true
+    );
+    setLoading(false);
+  }, [setFormData, articleToUpdate]);
 
   const articleUpdateSubmithandler = (event) => {
     event.preventDefault();
@@ -77,6 +99,14 @@ const UpdateArticle = () => {
     return (
       <Card>
         <h2>Article not found.</h2>
+      </Card>
+    );
+  }
+
+  if (loading) {
+    return (
+      <Card>
+        <h2>Loading.</h2>
       </Card>
     );
   }
