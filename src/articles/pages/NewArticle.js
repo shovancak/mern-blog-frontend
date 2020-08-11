@@ -54,8 +54,13 @@ const NewArticle = () => {
     });
   }, []);
 
+  const articleSubmithandler = (event) => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
+
   return (
-    <form className="article-form center">
+    <form className="article-form center" onSubmit={articleSubmithandler}>
       <div className="article-form-header">CREATE NEW ARTILCE</div>
       <Input
         id="title"
@@ -63,15 +68,23 @@ const NewArticle = () => {
         type="text"
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a title."
+        errorText="Please enter a title for article."
         onInput={inputHandler}
       />
       <Input
         id="description"
         label="Description"
-        rows="4"
+        rows="3"
         validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a description."
+        errorText="Please enter a description for article."
+        onInput={inputHandler}
+      />
+      <Input
+        id="text"
+        label="Text"
+        rows="15"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a text for article."
         onInput={inputHandler}
       />
       <Button
