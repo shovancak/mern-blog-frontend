@@ -1,0 +1,43 @@
+.article-form {
+  background-color: #0b8457;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 60%;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  flex-direction: column;
+  font-family: "Roboto Mono", monospace;
+}
+
+.article-form-header {
+  font-size: 1.5rem;
+}
+
+.form-submit-button-invalid {
+  background-color: #f9ff21;
+  font: inherit;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.form-submit-button-valid {
+  background-color: #f9ff21;
+  font: inherit;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.form-submit-button-valid:hover {
+  color: white;
+  background-color: #f23557;
+  text-shadow: 2px 2px black;
+}
