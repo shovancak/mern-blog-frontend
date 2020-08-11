@@ -99,10 +99,10 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
         <div className="single-article-text">{singleArticle.text}</div>
         <div className="single-article-buttons">
           <Button
-            to={`/articles/update/${singleArticle.articleId}`}
+            to={`/articles/update/${articleId}`}
             className="single-article-button"
           >
-            EDIT
+            UPDATE
           </Button>
           <Button
             className="single-article-button"
