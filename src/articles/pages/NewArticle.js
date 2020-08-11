@@ -41,6 +41,10 @@ const NewArticle = () => {
         value: "",
         isValid: false,
       },
+      text: {
+        value: "",
+        isValid: false,
+      },
     },
     isValid: false,
   });
@@ -82,7 +86,7 @@ const NewArticle = () => {
       <Input
         id="text"
         label="Text"
-        rows="15"
+        rows="25"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a text for article."
         onInput={inputHandler}
