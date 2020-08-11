@@ -70,23 +70,25 @@ const UpdateArticle = () => {
   );
 
   useEffect(() => {
-    setFormData(
-      {
-        title: {
-          value: articleToUpdate.title,
-          isValid: true,
+    if (articleToUpdate) {
+      setFormData(
+        {
+          title: {
+            value: articleToUpdate.title,
+            isValid: true,
+          },
+          description: {
+            value: articleToUpdate.description,
+            isValid: true,
+          },
+          text: {
+            value: articleToUpdate.text,
+            isValid: true,
+          },
         },
-        description: {
-          value: articleToUpdate.description,
-          isValid: true,
-        },
-        text: {
-          value: articleToUpdate.text,
-          isValid: true,
-        },
-      },
-      true
-    );
+        true
+      );
+    }
     setLoading(false);
   }, [setFormData, articleToUpdate]);
 

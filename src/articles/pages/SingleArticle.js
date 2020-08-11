@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Button from "../../shared/components/Button";
 import Modal from "../../shared/components/Modal";
+import Card from "../../shared/components/Card";
 
 import "./SingleArticle.css";
 
@@ -57,7 +58,16 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
 
   const deleteArticleHandler = () => {
     console.log("ARTICLE HAS BEEN DELETED");
+    setShowModal(false);
   };
+
+  if (!singleArticle) {
+    return (
+      <Card>
+        <h2>Article does not exist.</h2>
+      </Card>
+    );
+  }
 
   return (
     <React.Fragment>
