@@ -11,6 +11,24 @@
   padding-bottom: 1%;
 }
 
+.button-na {
+  background-color: #f9ff21;
+  font: inherit;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 8rem;
+}
+
+.button-na:hover {
+  color: white;
+  background-color: #f23557;
+  text-shadow: 2px 2px black;
+}
+
 @media (min-width: 768px) {
   .article-list {
     width: 90%;
