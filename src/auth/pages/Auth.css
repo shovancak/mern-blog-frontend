@@ -14,7 +14,7 @@
   font-size: 1.5rem;
 }
 
-.auth-submit-button-invalid {
+.auth-login-signup-button-invalid {
   background-color: #f9ff21;
   font: inherit;
   font-size: 1.2rem;
@@ -22,10 +22,10 @@
   border-radius: 5px;
   margin-top: 1rem;
   padding: 0.5rem;
-  width: 6rem;
+  width: 7rem;
 }
 
-.auth-submit-button-valid {
+.auth-login-signup-button-valid {
   background-color: #f9ff21;
   font: inherit;
   font-size: 1.2rem;
@@ -34,10 +34,28 @@
   margin-top: 1rem;
   padding: 0.5rem;
   cursor: pointer;
-  width: 6rem;
+  width: 7rem;
 }
 
-.auth-submit-button-valid:hover {
+.auth-login-signup-button-valid:hover {
+  color: white;
+  background-color: #f23557;
+  text-shadow: 2px 2px black;
+}
+
+.auth-switch-mode-button {
+  background-color: white;
+  font: inherit;
+  font-size: 1.2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 10rem;
+}
+
+.auth-switch-mode-button:hover {
   color: white;
   background-color: #f23557;
   text-shadow: 2px 2px black;
