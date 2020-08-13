@@ -7,6 +7,7 @@ import { useForm } from "../../shared/utilities/form-validation-hook";
 import Card from "../../shared/components/Card";
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
+import Modal from "../../shared/components/Modal";
 
 import "./UpdateArticle.css";
 
@@ -46,6 +47,8 @@ const DUMMY_ARTICLES = [
 const UpdateArticle = () => {
   const articleId = useParams().articleId;
   const [loading, setLoading] = useState(true);
+
+  const [showModal, setShowModal] = useState(false);
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -97,6 +100,14 @@ const UpdateArticle = () => {
     console.log(formState.inputs);
   };
 
+  const showUpadateMessageModal = () => {
+    setShowModal(true);
+  };
+
+  const closeUpdateMessageModal = () => {
+    setShowModal(false);
+  };
+
   if (!articleToUpdate) {
     return (
       <Card>
@@ -114,51 +125,70 @@ const UpdateArticle = () => {
   }
 
   return (
-    <form className="article-form center" onSubmit={articleUpdateSubmithandler}>
-      <div className="article-form-header">UPDATE ARTILCE</div>
-      <Input
-        id="title"
-        element="input"
-        type="text"
-        label="Title"
-        validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a title for article"
-        onInput={inputHandler}
-        initialValue={formState.inputs.title.value}
-        initialValid={formState.inputs.title.isValid}
-      />
-      <Input
-        id="description"
-        label="Description"
-        rows="3"
-        validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a description for article"
-        onInput={inputHandler}
-        initialValue={formState.inputs.description.value}
-        initialValid={formState.inputs.description.isValid}
-      />
-      <Input
-        id="text"
-        label="Text"
-        rows="25"
-        validators={[VALIDATOR_REQUIRE()]}
-        errorText="Please enter a text for article"
-        onInput={inputHandler}
-        initialValue={formState.inputs.text.value}
-        initialValid={formState.inputs.text.isValid}
-      />
-      <Button
-        type="submit"
-        disabled={!formState.isValid}
-        className={`${
-          formState.isValid
-            ? `form-submit-button-valid`
-            : `form-submit-button-invalid`
-        }`}
+    <React.Fragment>
+      {showModal ? (
+        <Modal
+          className="modal-warning"
+          show={showModal}
+          onCancel={closeUpdateMessageModal}
+        >
+          <div className="update-article-modal">
+            <div className="update-article-modal-question">
+              Article has been updated.
+            </div>
+          </div>
+        </Modal>
+      ) : null}
+      <form
+        className="article-form center"
+        onSubmit={articleUpdateSubmithandler}
       >
-        UPDATE
-      </Button>
-    </form>
+        <div className="article-form-header">UPDATE ARTILCE</div>
+        <Input
+          id="title"
+          element="input"
+          type="text"
+          label="Title"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a title for article"
+          onInput={inputHandler}
+          initialValue={formState.inputs.title.value}
+          initialValid={formState.inputs.title.isValid}
+        />
+        <Input
+          id="description"
+          label="Description"
+          rows="3"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a description for article"
+          onInput={inputHandler}
+          initialValue={formState.inputs.description.value}
+          initialValid={formState.inputs.description.isValid}
+        />
+        <Input
+          id="text"
+          label="Text"
+          rows="25"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a text for article"
+          onInput={inputHandler}
+          initialValue={formState.inputs.text.value}
+          initialValid={formState.inputs.text.isValid}
+        />
+        <Button
+          type="submit"
+          onClick={showUpadateMessageModal}
+          disabled={!formState.isValid}
+          className={`${
+            formState.isValid
+              ? `form-submit-button-valid`
+              : `form-submit-button-invalid`
+          }`}
+        >
+          UPDATE
+        </Button>
+      </form>
+    </React.Fragment>
   );
 };
 
