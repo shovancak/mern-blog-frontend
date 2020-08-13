@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
 } from "../../shared/utilities/validators";
 import { useForm } from "../../shared/utilities/form-validation-hook";
 
 import "./Auth.css";
 
 const Auth = () => {
-  const [formState, inputHandler] = useForm(
+  const [loginMode, setLoginMode] = useState(true);
+
+  const [formState, inputHandler, setFormData] = useForm(
     {
       email: {
         value: "",
@@ -25,6 +28,31 @@ const Auth = () => {
     false
   );
 
+  const authModeHandler = (event) => {
+    event.preventDefault();
+    if (!loginMode) {
+      setFormData(
+        {
+          ...formState.inputs,
+          username: undefined,
+        },
+        formState.inputs.email.isValid && formState.inputs.password.isValid
+      );
+    } else {
+      setFormData(
+        {
+          ...formState.inputs,
+          username: {
+            value: "",
+            isValid: false,
+          },
+        },
+        false
+      );
+    }
+    setLoginMode((previousMode) => !previousMode);
+  };
+
   const authSubmitHandler = (event) => {
     event.preventDefault();
     console.log("LOGGED IN", formState.inputs);
@@ -33,6 +61,17 @@ const Auth = () => {
   return (
     <form className="auth-form center" onSubmit={authSubmitHandler}>
       <div className="auth-form-header">LOGIN FORM</div>
+      {!loginMode ? (
+        <Input
+          id="username"
+          element="input"
+          type="text"
+          label="Username"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a username."
+          onInput={inputHandler}
+        />
+      ) : null}
       <Input
         id="email"
         element="input"
@@ -56,11 +95,14 @@ const Auth = () => {
         disabled={!formState.isValid}
         className={
           formState.isValid
-            ? "auth-submit-button-valid"
-            : "auth-submit-button-invalid"
+            ? "auth-login-signup-button-valid"
+            : "auth-login-signup-button-invalid"
         }
       >
-        LOGIN
+        {loginMode ? "LOGIN" : "SIGN UP"}
+      </Button>
+      <Button className="auth-switch-mode-button" onClick={authModeHandler}>
+        {loginMode ? "SIGN UP FORM" : "LOGIN FORM"}
       </Button>
     </form>
   );
