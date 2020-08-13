@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import Button from "../../shared/components/Button";
 import Modal from "../../shared/components/Modal";
 import Card from "../../shared/components/Card";
+import { AuthContext } from "../../shared/utilities/contex";
 
 import "./SingleArticle.css";
 
@@ -45,6 +46,8 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
   const singleArticle = DUMMY_ARTICLES.find(
     (article) => article.id === articleId
   );
+
+  const auth = useContext(AuthContext);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -107,20 +110,22 @@ const SingleArtilce = (prosp = DUMMY_ARTICLES) => {
           {singleArticle.description}
         </div>
         <div className="single-article-text">{singleArticle.text}</div>
-        <div className="single-article-buttons">
-          <Button
-            to={`/articles/update/${articleId}`}
-            className="single-article-button"
-          >
-            UPDATE
-          </Button>
-          <Button
-            className="single-article-button"
-            onClick={showDeleteWarningHandler}
-          >
-            DELETE
-          </Button>
-        </div>
+        {auth.loggedIn ? (
+          <div className="single-article-buttons">
+            <Button
+              to={`/articles/update/${articleId}`}
+              className="single-article-button"
+            >
+              UPDATE
+            </Button>
+            <Button
+              className="single-article-button"
+              onClick={showDeleteWarningHandler}
+            >
+              DELETE
+            </Button>
+          </div>
+        ) : null}
       </div>
     </React.Fragment>
   );
