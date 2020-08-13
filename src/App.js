@@ -27,33 +27,59 @@ const App = () => {
     setLoggedIn(false);
   }, []);
 
+  let pages;
+
+  if (!loggedIn) {
+    pages = (
+      <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/:userId/articles" exact>
+          <UsersArticles />
+        </Route>
+        <Route path="/articles/:articleId">
+          <SingleArtilce />
+        </Route>
+        <Route path="/auth" exact>
+          <Auth />
+        </Route>
+        <Redirect to="/auth" />
+      </Switch>
+    );
+  } else {
+    pages = (
+      <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/:userId/articles" exact>
+          <UsersArticles />
+        </Route>
+        <Route path="/articles/new" exact>
+          <NewArticle />
+        </Route>
+        <Route path="/articles/update/:articleId" exact>
+          <UpdateArticle />
+        </Route>
+        <Route path="/auth" exact>
+          <Auth />
+        </Route>
+        <Route path="/articles/:articleId">
+          <SingleArtilce />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    );
+  }
+
   return (
     <AuthContext.Provider
       value={{ loggedIn: loggedIn, login: login, logout: logout }}
     >
       <Router>
         <Header />
-        <Switch>
-          <Route path="/" exact>
-            <Users />
-          </Route>
-          <Route path="/:userId/articles" exact>
-            <UsersArticles />
-          </Route>
-          <Route path="/articles/new" exact>
-            <NewArticle />
-          </Route>
-          <Route path="/articles/update/:articleId" exact>
-            <UpdateArticle />
-          </Route>
-          <Route path="/auth" exact>
-            <Auth />
-          </Route>
-          <Route path="/articles/:articleId" exact>
-            <SingleArtilce />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
+        {pages}
       </Router>
     </AuthContext.Provider>
   );
