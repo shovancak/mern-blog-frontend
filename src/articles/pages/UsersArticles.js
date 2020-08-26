@@ -41,11 +41,9 @@ const DUMMY_ARTICLES = [
 const UsersArticles = () => {
   const userId = useParams().userId;
   let usersPlaces = [];
-  DUMMY_ARTICLES.map((article) => {
-    if (article.creator === userId) {
-      usersPlaces.push(article);
-    }
-  });
+  DUMMY_ARTICLES.map((article) =>
+    article.creator === userId ? usersPlaces.push(article) : null
+  );
   return (
     <div className="articles">
       <ArticleList items={usersPlaces} />
