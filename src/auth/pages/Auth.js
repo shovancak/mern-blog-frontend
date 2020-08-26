@@ -83,11 +83,13 @@ const Auth = () => {
           }),
         });
         const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
         console.log(data);
         setLoading(false);
         auth.login();
       } catch (err) {
-        console.log(err);
         setLoading(false);
         setError(err.message || "Something went wrong, please try again.");
       }
@@ -97,6 +99,7 @@ const Auth = () => {
 
   return (
     <React.Fragment>
+      {error ? <Card>Something went wrong, try again please.</Card> : null}
       {loading ? (
         <Card>LOADING...</Card>
       ) : (
