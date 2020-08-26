@@ -22,6 +22,10 @@ const NewArticle = () => {
         value: "",
         isValid: false,
       },
+      imageUrl: {
+        value: "",
+        isValid: false,
+      },
     },
     false
   );
@@ -41,6 +45,14 @@ const NewArticle = () => {
         label="Title"
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a title for article."
+        onInput={inputHandler}
+      />
+      <Input
+        id="imageUrl"
+        label="Image URL"
+        rows="2"
+        validators={[VALIDATOR_REQUIRE()]}
+        errorText="Please enter a image (url) for article."
         onInput={inputHandler}
       />
       <Input
