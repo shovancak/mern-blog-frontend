@@ -67,6 +67,28 @@ const Auth = () => {
   const authSubmitHandler = async (event) => {
     event.preventDefault();
     if (loginMode) {
+      try {
+        setLoading(true);
+        const response = await fetch("http://localhost:5000/api/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+        setLoading(false);
+        auth.login();
+      } catch (err) {
+        setLoading(false);
+        setError(err.message || "Something went wrong, please try again.");
+      }
     } else {
       try {
         setLoading(true);
@@ -86,7 +108,6 @@ const Auth = () => {
         if (!response.ok) {
           throw new Error(data.message);
         }
-        console.log(data);
         setLoading(false);
         auth.login();
       } catch (err) {
