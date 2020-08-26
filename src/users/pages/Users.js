@@ -1,49 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import UserList from "../components/UserList";
+import Card from "../../shared/components/Card";
 
 const Users = () => {
-  const DUMMY_USERS = [
-    {
-      id: "u1",
-      name: "Samuel",
-      image: "https://i.imgur.com/DcylgJM.jpg",
-      articleId: 11,
-      amount: 2,
-    },
-    {
-      id: "u2",
-      name: "Max",
-      image: "https://i.imgur.com/DcylgJM.jpg",
-      articleId: 22,
-      amount: 1,
-    },
-    {
-      id: "u3",
-      name: "Oliver",
-      image: "https://i.imgur.com/DcylgJM.jpg",
-      articleId: 33,
-      amount: 1,
-    },
-    {
-      id: "u4",
-      name: "Andrei",
-      image: "https://i.imgur.com/DcylgJM.jpg",
-      articleId: 44,
-      amount: 3,
-    },
-    {
-      id: "u5",
-      name: "Yhua",
-      image: "https://i.imgur.com/DcylgJM.jpg",
-      articleId: 55,
-      amount: 4,
-    },
-  ];
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(undefined);
+  const [loadedUsers, setLoadedUsers] = useState(undefined);
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("http://localhost:5000/api/users");
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+        setLoadedUsers(data.users);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+      }
+      setLoading(false);
+    };
+    sendRequest();
+  }, []);
 
   return (
     <div>
-      <UserList users={DUMMY_USERS} />
+      {error ? <Card>Something went wrong, please try again.</Card> : null}
+      {loading && <Card>LOADING...</Card>}
+      {!loading && loadedUsers && <UserList users={loadedUsers} />}
     </div>
   );
 };
