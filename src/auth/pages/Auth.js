@@ -38,7 +38,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           username: undefined,
-          iamgeUrl: undefined,
+          imageUrl: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -61,9 +61,37 @@ const Auth = () => {
     setLoginMode((previousMode) => !previousMode);
   };
 
-  const authSubmitHandler = (event) => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log("LOGGED IN", formState.inputs);
+    console.log("ZAZAasdasdsadZA");
+    let loging = {
+      name: formState.inputs.username.value,
+      imageUrl: formState.inputs.imageUrl.value,
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+    };
+    console.log(loging);
+    console.log("AFTER LOG");
+    if (loginMode) {
+    } else {
+      try {
+        const response = await fetch("http://localhost:5000/api/users/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formState.inputs.username.value,
+            imageUrl: formState.inputs.imageUrl.value,
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        });
+        console.log(response);
+      } catch (err) {
+        console.log("Something went wrong:", err);
+      }
+    }
     auth.login();
   };
 
