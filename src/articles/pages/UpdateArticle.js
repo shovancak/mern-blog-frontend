@@ -64,6 +64,10 @@ const UpdateArticle = () => {
         value: "",
         isValid: false,
       },
+      imageUrl: {
+        value: "",
+        isValid: false,
+      },
     },
     true
   );
@@ -86,6 +90,10 @@ const UpdateArticle = () => {
           },
           text: {
             value: articleToUpdate.text,
+            isValid: true,
+          },
+          imageUrl: {
+            value: articleToUpdate.imageUrl,
             isValid: true,
           },
         },
@@ -154,6 +162,16 @@ const UpdateArticle = () => {
           onInput={inputHandler}
           initialValue={formState.inputs.title.value}
           initialValid={formState.inputs.title.isValid}
+        />
+        <Input
+          id="imageUrl"
+          label="Image"
+          rows="2"
+          validators={[VALIDATOR_REQUIRE()]}
+          errorText="Please enter a image (url) for article"
+          onInput={inputHandler}
+          initialValue={formState.inputs.imageUrl.value}
+          initialValid={formState.inputs.imageUrl.isValid}
         />
         <Input
           id="description"
