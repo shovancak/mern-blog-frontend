@@ -38,6 +38,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           username: undefined,
+          iamgeUrl: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -46,6 +47,10 @@ const Auth = () => {
         {
           ...formState.inputs,
           username: {
+            value: "",
+            isValid: false,
+          },
+          imageUrl: {
             value: "",
             isValid: false,
           },
@@ -66,15 +71,26 @@ const Auth = () => {
     <form className="auth-form center" onSubmit={authSubmitHandler}>
       <div className="auth-form-header">LOGIN FORM</div>
       {!loginMode ? (
-        <Input
-          id="username"
-          element="input"
-          type="text"
-          label="Username"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a username."
-          onInput={inputHandler}
-        />
+        <React.Fragment>
+          <Input
+            id="username"
+            element="input"
+            type="text"
+            label="Username"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a username."
+            onInput={inputHandler}
+          />
+          <Input
+            id="imageUrl"
+            element="input"
+            type="text"
+            label="Iamge"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a image URL."
+            onInput={inputHandler}
+          />
+        </React.Fragment>
       ) : null}
       <Input
         id="email"
