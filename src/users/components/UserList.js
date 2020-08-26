@@ -22,9 +22,9 @@ const UserList = (props) => {
             key={user.id}
             id={user.id}
             name={user.name}
-            image={user.image}
+            image={user.imageUrl}
             articleId={user.articleId}
-            amount={user.amount}
+            amount={user.articles.length}
           />
         ))}
       </ul>

@@ -13,6 +13,7 @@ const UserItem = (props) => {
               className="image"
               src={props.image}
               width={100}
+              height={100}
               alt="User avatar"
             />
           </div>
