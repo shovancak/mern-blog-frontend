@@ -20,15 +20,20 @@ export const useHttpClient = () => {
         });
 
         const data = await response.json();
+        activeRequest.current = activeRequest.current.filter(
+          (requestController) => requestController !== httpAbortController
+        );
         // if response code is 4xx or 5xx error will be thrown
         if (!response.ok) {
           throw new Error(data.message);
         }
+        setLoading(false);
         return data;
       } catch (err) {
         setError(err.message || "Something went wrong, please try again.");
+        setLoading(false);
+        throw err;
       }
-      setLoading(false);
     },
     []
   );
