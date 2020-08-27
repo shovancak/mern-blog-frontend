@@ -10,6 +10,7 @@ import {
 } from "../../shared/utilities/validators";
 import { useForm } from "../../shared/utilities/form-validation-hook";
 import { AuthContext } from "../../shared/utilities/contex";
+import { useHttpClient } from "../../shared/utilities/http-hook";
 
 import "./Auth.css";
 
@@ -17,8 +18,8 @@ const Auth = () => {
   const auth = useContext(AuthContext);
 
   const [loginMode, setLoginMode] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+
+  const { loading, error, request, clearError } = useHttpClient();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -68,54 +69,37 @@ const Auth = () => {
     event.preventDefault();
     if (loginMode) {
       try {
-        setLoading(true);
-        const response = await fetch("http://localhost:5000/api/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        await request(
+          "http://localhost:5000/api/users/login",
+          "POST",
+          JSON.stringify({
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
           }),
-        });
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.message);
-        }
-        setLoading(false);
+          {
+            "Content-Type": "application/json",
+          }
+        );
         auth.login();
-      } catch (err) {
-        setLoading(false);
-        setError(err.message || "Something went wrong, please try again.");
-      }
+      } catch (err) {}
     } else {
       try {
-        setLoading(true);
-        const response = await fetch("http://localhost:5000/api/users/signup", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+        request(
+          "http://localhost:5000/api/users/signup",
+          "POST",
+          JSON.stringify({
             name: formState.inputs.username.value,
             imageUrl: formState.inputs.imageUrl.value,
             email: formState.inputs.email.value,
             password: formState.inputs.password.value,
           }),
-        });
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data.message);
-        }
-        setLoading(false);
+          {
+            "Content-Type": "application/json",
+          }
+        );
         auth.login();
-      } catch (err) {
-        setLoading(false);
-        setError(err.message || "Something went wrong, please try again.");
-      }
+      } catch (err) {}
     }
-    setLoading(false);
   };
 
   return (
