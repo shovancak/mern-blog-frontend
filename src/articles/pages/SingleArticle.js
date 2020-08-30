@@ -96,7 +96,7 @@ const SingleArtilce = () => {
           {singleArticle.description}
         </div>
         <div className="single-article-text">{singleArticle.text}</div>
-        {auth.loggedIn ? (
+        {auth.userId === singleArticle.creator ? (
           <div className="single-article-buttons">
             <Button
               to={`/articles/update/${articleId}`}
