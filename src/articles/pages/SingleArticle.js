@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Button from "../../shared/components/Button";
 import Modal from "../../shared/components/Modal";
@@ -13,6 +13,7 @@ const SingleArtilce = () => {
   const { loading, error, request, clearError } = useHttpClient();
   const [singleArticle, setSingleArticle] = useState(undefined);
   const articleId = useParams().articleId;
+  const history = useHistory();
 
   useEffect(() => {
     const sendRequest = async () => {
@@ -38,9 +39,15 @@ const SingleArtilce = () => {
     setShowModal(false);
   };
 
-  const deleteArticleHandler = () => {
-    console.log("ARTICLE HAS BEEN DELETED");
+  const deleteArticleHandler = async () => {
+    try {
+      await request(
+        `http://localhost:5000/api/articles/${articleId}`,
+        "DELETE"
+      );
+    } catch (err) {}
     setShowModal(false);
+    history.push("/");
   };
 
   if (!singleArticle) {
