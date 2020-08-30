@@ -17,7 +17,7 @@ const NavigationLinks = () => {
       </li>
       {auth.loggedIn ? (
         <li>
-          <NavLink to="/:userId/articles">MY ARTICLES</NavLink>
+          <NavLink to={`/${auth.userId}/articles`}>MY ARTICLES</NavLink>
         </li>
       ) : null}
       {auth.loggedIn ? (
