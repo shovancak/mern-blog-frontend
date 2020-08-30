@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { VALIDATOR_REQUIRE } from "../../shared/utilities/validators";
 import { useForm } from "../../shared/utilities/form-validation-hook";
@@ -19,6 +19,8 @@ const UpdateArticle = () => {
   const [articleToUpdate, setArticleToUpdate] = useState(undefined);
 
   const { loading, error, request, clearError } = useHttpClient();
+
+  const history = useHistory();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -75,9 +77,23 @@ const UpdateArticle = () => {
     sendRequest();
   }, [request, articleId, setFormData]);
 
-  const articleUpdateSubmithandler = (event) => {
+  const articleUpdateSubmithandler = async (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
+    try {
+      await request(
+        `http://localhost:5000/api/articles/${articleId}`,
+        "PATCH",
+        JSON.stringify({
+          title: formState.inputs.title.value,
+          description: formState.inputs.description.value,
+          text: formState.inputs.text.value,
+          imageUrl: formState.inputs.imageUrl.value,
+        }),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+    } catch (err) {}
   };
 
   const showUpadateMessageModal = () => {
@@ -86,6 +102,7 @@ const UpdateArticle = () => {
 
   const closeUpdateMessageModal = () => {
     setShowModal(false);
+    history.push(`/articles/${articleId}`);
   };
 
   if (loading) {
